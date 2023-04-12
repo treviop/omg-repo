@@ -7,7 +7,7 @@ param (
 [Alias("f")]
 [string]$SourceFilePath
 ) 
-$DropBoxAccessToken = "sl.BalnnUrv3WnJH4zt7mEdwfqvrs3fNi0ox5U0ezFPBhVjMrUI4nlBkqGsJxYtcXEpaX5JyAW1Z6sGOKjRHYO39Lny2c0VJ-WY4NbOZtdk7AuzZ8WSGKwFjIgGjVO1iJpBP-7SzDk"   # Replace with your DropBox Access Token
+$DropBoxAccessToken = "sl.BcY1pZbPoLeuUyAR7fGkigpsILM7NXZD32rrjzgU9G5Ojdh1PPkZ9P2GckUbBFQCBhPg4XwVfzSWb6Ll-7wVq9EBzEXwWPfYZjynE1_-lOa5HKkW-nvhUUTyYlZdewV37eLrTwc"   # Replace with your DropBox Access Token
 $outputFile = Split-Path $SourceFilePath -leaf
 $TargetFilePath="/$outputFile"
 $arg = '{ "path": "' + $TargetFilePath + '", "mode": "add", "autorename": true, "mute": false }'
