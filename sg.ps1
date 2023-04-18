@@ -80,7 +80,7 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 	
     # create endless loop. When user presses CTRL+C, finally-block
     # executes and shows the collected key presses
-    while ($iteration -lt 10) {
+    while ($iteration -lt 5) {
 	  
       Start-Sleep -Milliseconds 40
       
