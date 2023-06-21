@@ -65,7 +65,7 @@ rm wipass
 
 
 $i = 0
-while($i -lt 300){
+while($i -lt 960){
 
   Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 
