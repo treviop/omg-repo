@@ -16,7 +16,7 @@ $file = $SourceFilePath
 
 # Define authentication information
 $nextcloudUrl = "https://wim.nl.tab.digital/"
-$sharetoken = 'sajkdnksjdnkks'
+$sharetoken = 'gkj9TSrXtzxGrn4'
 
 # Retrieve file object
 $fileObject = Get-Item $file
